@@ -1,27 +1,69 @@
-import React from 'react';
+import React,{useState} from 'react';
+import { AddUser } from '../service/api';
 
 
+const defaultValue={
+  username:"",
+  name:"",
+  father_name:"",
+  mother_name:"",
+  DOB:"",
+  products:[],
+  hobbies:[],
+  state:"",
+  city:"",
+  postal_code:""
+}
 const Create = () => {
+  const [user,setUser]=useState(defaultValue)
+ 
 
   const handleChange=(e)=>{
-  console.log(e.target.value)
+   console.log(e)
+  
+    let x=(e.target.value)
+    user.products.push(x)
+    setUser({...user})
+  console.log(user)
+ 
+    
+  }
+  const inputHandleChane=(e)=>{
+   
+  setUser({...user,[e.target.name] :e.target.value})
+  console.log(user)
   }
 
   const HobbbiesHandleChange=(e)=>{
+    let x=(e.target.value)
+    user.hobbies.push(x)
+    setUser({...user})
+  console.log(user)
+  }
+  const CittyHandle=(e)=>{
+    setUser({...user,[e.target.name] :e.target.value})
+    console.log(user)
     console.log(e.target.value)
+  }
+ 
+  const submitHandler=async(e)=>{
+    e.preventDefault()
+   await AddUser(user)
   }
   return (
     <div>
       <p>Add Details</p>
-      <form>
+      <form onSubmit={submitHandler}>
         <label>user</label>
-        <input type="text" placeholder="Enter your username"/>
+        <input type="text" placeholder="Enter your username" onChange={ (e)=>inputHandleChane(e)} name="user"/>
         <label>Name</label>
-        <input type="text" placeholder="Enter your name here"/>
+        <input type="text" placeholder="Enter your name here" onChange={ (e)=>inputHandleChane(e)} name="name"/>
         <label>Father's Name</label>
-        <input type="text" placeholder="Enter your father's name here"/>
+        <input type="text" placeholder="Enter your father's name here" onChange={ (e)=>inputHandleChane(e)} name="father_name" />
         <label>Mother's Name</label>
-        <input  type="text" placeholder="Enter your father's name here" /><br/>
+        <input  type="text" placeholder="Enter your father's name here"  onChange={ (e)=>inputHandleChane(e)} name="mother_name"  /><br/>
+        <label>DOB</label>
+        <input  type="date" placeholder="Enter your DOB" onChange={ (e)=>inputHandleChane(e)} name="DOB"/><br/>
         <label> Select your Products</label><br/>
         <label>MacBook</label>
         <input
@@ -30,6 +72,7 @@ const Create = () => {
                     name="products"
                     value="MacBook"
                     id="flexCheckDefault"
+                 
                     onChange={handleChange}
                   /><br/>
         <label>iWatcht</label>
@@ -70,19 +113,13 @@ const Create = () => {
                   /><br/>
         {/* hobboies sections */}
 
-        <label> Select your Products</label><br/>
-        {/* <select>
-            <option>select</option>
-            <option>Mackbook</option>
-            <option>Iwatch</option>
-            <option>Ipone</option>
-            <option>Headphone</option>
-        </select> */}
+        <label> Select your Hobbies</label><br/>
+       
         <label>A</label>
         <input
                     className="form-check-input"
                     type="checkbox"
-                    name="products"
+                    name="hobbies"
                     value="MacBook"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
@@ -92,7 +129,7 @@ const Create = () => {
         <input
                     className="form-check-input"
                     type="checkbox"
-                    name="products"
+                    name="hobbies"
                     value="iWatcht"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
@@ -101,7 +138,7 @@ const Create = () => {
         <input
                     className="form-check-input"
                     type="checkbox"
-                    name="products"
+                    name="hobbies"
                     value="iPhone"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
@@ -110,7 +147,7 @@ const Create = () => {
         <input
                     className="form-check-input"
                     type="checkbox"
-                    name="products"
+                    name="hobbies"
                     value="iPAD"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
@@ -119,34 +156,35 @@ const Create = () => {
          <input
                     className="form-check-input"
                     type="checkbox"
-                    name="product"
+                    name="hobbies"
                     value="Headphones"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
                   /><br/>
         {/* dropdown for state,city and code */}
         <label>Select your state</label>
-      <select>
-         <option>Chose</option>
-         <option>Maharashtra</option>
+      <select onChange={CittyHandle} name="state">
+         <option value="">Chose</option>
+         <option value="Maharashtra" >Maharashtra</option>
       </select><br/>
       <label>Select your city</label>
-      <select>
-         <option>Chose</option>
-         <option>Mumbai</option>
-         <option>Pune</option>
-         <option>Nagpur</option>
-         <option>Thane</option>
-         <option>Nashik</option>
+      <select onChange={CittyHandle} value={user.city} name="city">
+         <option value="" >Chose</option>
+         <option value="Mumbai">Mumbai</option>
+         <option value="Pune">Pune</option>
+         <option value="Nagpur">Nagpur</option>
+         <option value="Thane">Thane</option>
+         <option value="Nashik">Nashik</option>
       </select><br/>
       <label>Select your Postal code</label>
-      <select>
-         <option>Chose</option>
-         <option>400071</option>
-         <option>400072</option>
-         <option>400073</option>
-         <option>400074</option>
-         <option>400076</option>
+      <select onChange={CittyHandle} name="postal_code">
+         <option value="">Chose</option>
+         <option value="400071">400071</option>
+         <option value="400072">400072</option>
+         <option value="400073">400073</option>
+         <option value="400074">400074</option>
+         <option value="400075">400075</option>
+         <option value="400076">400076</option>
       </select><br/>
     <input type="submit"  name='Submit'/>
       </form>
