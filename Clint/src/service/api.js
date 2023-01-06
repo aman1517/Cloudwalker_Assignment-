@@ -16,3 +16,11 @@ export const  getuser=async()=>{
         console.log("Error While Calling",err)
     }
 }
+export const getuserr=async(id)=>{
+ try{
+  return await axios.get(`${url}/${id}`)
+ }
+ catch(err){
+    console.log("error while calling geting api",err)
+ }
+}

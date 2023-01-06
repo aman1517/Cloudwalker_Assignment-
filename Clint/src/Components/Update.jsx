@@ -1,16 +1,36 @@
+import React,{useState,useEffect} from "react"
+import { getuser } from "../service/api"
+import { useParams } from "react-router-dom"
+import "../Style/Create.css"
+import { AddUser,getuserr } from "../service/api"
 
+const defaultValue={
+    username:"",
+    name:"",
+    father_name:"",
+    mother_name:"",
+    // DOB:"",
+    products:[],
+    hobbies:[],
+    state:"",
+    city:"",
+    postal_code:""
+  }
 const Update = () => {
-    const [user,setUser]=useState(d[])
-   
-  
+    const {id}=useParams()
+    const [user,setUser]=useState(defaultValue)
+    useEffect(()=>{
+        loaduserDetails()
+    },[])
+    const loaduserDetails=async()=>{
+        const responce=await getuserr(id)
+        setUser(responce.data)
+     }
+    
     const handleChange=(e)=>{
      console.log(e)
     
-      let x=(e.target.value)
-      user.products.push(x)
-      setUser({...user})
-    console.log(user)
-   
+    
       
     }
     const inputHandleChane=(e)=>{
@@ -37,16 +57,16 @@ const Update = () => {
     }
     return (
       <div>
-        <p>Add Details</p>
+        <p>Update Details</p>
         <form onSubmit={submitHandler}>
           <label>user</label>
-          <input type="text" placeholder="Enter your username" onChange={inputHandleChane} name="username"/>
+          <input type="text" placeholder="Enter your username" onChange={inputHandleChane} name="username" value={user.username}/>
           <label>Name</label>
-          <input type="text" placeholder="Enter your name here" onChange={inputHandleChane} name="name"/>
+          <input type="text" placeholder="Enter your name here" onChange={inputHandleChane} name="name"  value={user.name}/>
           <label>Father's Name</label>
-          <input type="text" placeholder="Enter your father's name here" onChange={inputHandleChane} name="father_name" />
+          <input type="text" placeholder="Enter your father's name here" onChange={inputHandleChane} name="father_name"  value={user.father_name} />
           <label>Mother's Name</label>
-          <input  type="text" placeholder="Enter your father's name here"  onChange={inputHandleChane} name="mother_name"  /><br/>
+          <input  type="text" placeholder="Enter your father's name here"  onChange={inputHandleChane} name="mother_name" value={user.mother_name}  /><br/>
           <label>DOB</label>
           <input  type="date" placeholder="Enter your DOB" onChange={inputHandleChane} name="DOB"/><br/>
           <label> Select your Products</label><br/>
@@ -55,7 +75,7 @@ const Update = () => {
                       className="form-check-input"
                       type="checkbox"
                       name="products"
-                      value="MacBook"
+                      value={user.hobbies}
                       id="flexCheckDefault"
                    
                       onChange={handleChange}
@@ -65,7 +85,7 @@ const Update = () => {
                       className="form-check-input"
                       type="checkbox"
                       name="products"
-                      value="iWatcht"
+                      value={user.hobbies}
                       id="flexCheckDefault"
                       onChange={handleChange}
                     /><br/>
@@ -83,7 +103,7 @@ const Update = () => {
                       className="form-check-input"
                       type="checkbox"
                       name="products"
-                      value="iPAD"
+                      value={user.hobbies}
                       id="flexCheckDefault"
                       onChange={handleChange}
                     /><br/>
@@ -105,7 +125,7 @@ const Update = () => {
                       className="form-check-input"
                       type="checkbox"
                       name="hobbies"
-                      value="MacBook"
+                      value={user.hobbies}
                       id="flexCheckDefault"
                       onChange={HobbbiesHandleChange}
                       
@@ -115,7 +135,7 @@ const Update = () => {
                       className="form-check-input"
                       type="checkbox"
                       name="hobbies"
-                      value="iWatcht"
+                      value={user.hobbies}
                       id="flexCheckDefault"
                       onChange={HobbbiesHandleChange}
                     /><br/>
@@ -124,7 +144,7 @@ const Update = () => {
                       className="form-check-input"
                       type="checkbox"
                       name="hobbies"
-                      value="iPhone"
+                      value={user.hobbies}
                       id="flexCheckDefault"
                       onChange={HobbbiesHandleChange}
                     /><br/>
@@ -153,7 +173,7 @@ const Update = () => {
            <option value="Maharashtra" >Maharashtra</option>
         </select><br/>
         <label>Select your city</label>
-        <select onChange={CittyHandle} value={user.city} name="city">
+        <select onChange={CittyHandle} value="" name="city">
            <option value="" >Chose</option>
            <option value="Mumbai">Mumbai</option>
            <option value="Pune">Pune</option>

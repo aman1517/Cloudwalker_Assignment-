@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { AddUser } from '../service/api';
+import "../Style/Create.css"
 
 
 const defaultValue={
@@ -24,21 +25,21 @@ const Create = () => {
     let x=(e.target.value)
     user.products.push(x)
     setUser({...user})
-  console.log(user)
+ 
  
     
   }
   const inputHandleChane=(e)=>{
    
   setUser({...user,[e.target.name] :e.target.value})
-  console.log(user)
+ 
   }
 
   const HobbbiesHandleChange=(e)=>{
     let x=(e.target.value)
     user.hobbies.push(x)
     setUser({...user})
-  console.log(user)
+
   }
   const CittyHandle=(e)=>{
     setUser({...user,[e.target.name] :e.target.value})
@@ -51,20 +52,23 @@ const Create = () => {
    await AddUser(user)
   }
   return (
-    <div>
-      <p>Add Details</p>
+    <div className='create_user'>
+      <h2>Add Details</h2>
       <form onSubmit={submitHandler}>
-        <label>user</label>
-        <input type="text" placeholder="Enter your username" onChange={inputHandleChane} name="username"/>
-        <label>Name</label>
-        <input type="text" placeholder="Enter your name here" onChange={inputHandleChane} name="name"/>
-        <label>Father's Name</label>
-        <input type="text" placeholder="Enter your father's name here" onChange={inputHandleChane} name="father_name" />
-        <label>Mother's Name</label>
+
+       <div className='namedetails'>
+       <label>User Name:</label>
+        <input type="text" placeholder="Enter your name here" onChange={inputHandleChane} name="username"/><br/>
+        <label>Name:</label>
+        <input type="text" placeholder="Enter your name here" onChange={inputHandleChane} name="name"/><br/>
+        <label>Father's Name:</label>
+        <input type="text" placeholder="Enter your father's name here" onChange={inputHandleChane} name="father_name" /><br/>
+        <label>Mother's Name:</label>
         <input  type="text" placeholder="Enter your father's name here"  onChange={inputHandleChane} name="mother_name"  /><br/>
-        <label>DOB</label>
+        <label>DOB:</label>
         <input  type="date" placeholder="Enter your DOB" onChange={inputHandleChane} name="DOB"/><br/>
-        <label> Select your Products</label><br/>
+       
+        <h2> Select your Products</h2><br/>
         <label>MacBook</label>
         <input
                     className="form-check-input"
@@ -113,56 +117,56 @@ const Create = () => {
                   /><br/>
         {/* hobboies sections */}
 
-        <label> Select your Hobbies</label><br/>
+        <h2> Select your Hobbies</h2><br/>
        
-        <label>A</label>
+        <label>Cricket</label>
         <input
                     className="form-check-input"
                     type="checkbox"
                     name="hobbies"
-                    value="MacBook"
+                    value="Cricket"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
                     
                   /><br/>
-        <label>B</label>
+        <label>Music</label>
         <input
                     className="form-check-input"
                     type="checkbox"
                     name="hobbies"
-                    value="iWatcht"
+                    value="Music"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
                   /><br/>
-        <label>C</label>         
+        <label>Video Game</label>         
         <input
                     className="form-check-input"
                     type="checkbox"
                     name="hobbies"
-                    value="iPhone"
+                    value="Video Game"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
                   /><br/>
-        <label>D</label>
+        <label>Dance</label>
         <input
                     className="form-check-input"
                     type="checkbox"
                     name="hobbies"
-                    value="iPAD"
+                    value="Dance"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
                   /><br/>
-          <label>E</label>
+          <label>Singing</label>
          <input
                     className="form-check-input"
                     type="checkbox"
                     name="hobbies"
-                    value="Headphones"
+                    value="Singing"
                     id="flexCheckDefault"
                     onChange={HobbbiesHandleChange}
                   /><br/>
         {/* dropdown for state,city and code */}
-        <label>Select your state</label>
+        <h2l>Select your state</h2l>
       <select onChange={CittyHandle} name="state">
          <option value="">Chose</option>
          <option value="Maharashtra" >Maharashtra</option>
@@ -187,6 +191,7 @@ const Create = () => {
          <option value="400076">400076</option>
       </select><br/>
     <input type="submit"  name='Submit'/>
+    </div>
       </form>
     </div>
   );

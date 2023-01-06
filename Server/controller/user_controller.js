@@ -23,4 +23,13 @@ const getusers=async(req,res)=>{
           res.status(404).json({messege:messege.err})
   }
 }
-module.exports={AddUser,getusers}
+const getuserr=async(req,res)=>{
+  try{
+    const user= await UserData.findById(req.params.id)
+    res.status(200).json(user)
+     }
+     catch(err){
+             res.status(404).json({messege:messege.err})
+     }
+}
+module.exports={AddUser,getusers,getuserr}

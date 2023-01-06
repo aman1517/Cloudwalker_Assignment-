@@ -1,0 +1,28 @@
+.create_user{
+    border: 5px solid black;
+    width: 90%;
+    margin: auto;
+}
+.namedetails{
+    width: 40%;
+    margin: auto;
+    padding: 40px 40px;
+    background-color: aqua;
+    box-sizing: border-box;
+    line-height: 2;
+}
+.create_user>h2{
+ text-align: center;
+;
+}
+
+/* .create_user>form>div{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid red;
+   font-size: 25px;
+}
+.create_user>form>div>input{
+    width: 50%;
+    margin-right: 50px;
+} */

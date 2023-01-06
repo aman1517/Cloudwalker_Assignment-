@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../Style/AllUser.css"
 import {getuser} from "../service/api"
 import { useEffect,useState } from 'react';
 const AllUser = () => {
+ 
   const [users,setUsers]=useState([])
   useEffect(()=>{
   getAllusers()
@@ -12,6 +14,7 @@ const AllUser = () => {
     setUsers(respone.data)
     console.log(users)
  }
+ const navigate=useNavigate()
 
   return (
     <div className='TableforUser'>
@@ -47,7 +50,9 @@ const AllUser = () => {
     <td>{user.state}</td>
     <td>{user.city}</td>
     <td>{user.postal_code}</td>
-    <button>Update</button>
+    <button onClick={()=>{
+      navigate(`/update/${user._id}`)
+    }}>Update</button>
     <button>Delete</button>
        </tbody>
       )
