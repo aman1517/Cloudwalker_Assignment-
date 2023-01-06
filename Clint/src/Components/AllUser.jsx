@@ -15,7 +15,9 @@ const AllUser = () => {
     console.log(users)
  }
  const navigate=useNavigate()
-
+const delteUser=async(id)=>{
+ await delteUser(id)
+}
   return (
     <div className='TableforUser'>
       <table className="tablehead">
@@ -50,10 +52,12 @@ const AllUser = () => {
     <td>{user.state}</td>
     <td>{user.city}</td>
     <td>{user.postal_code}</td>
-    <button onClick={()=>{
+   <div className='edit_dlete'>
+   <button onClick={()=>{
       navigate(`/update/${user._id}`)
     }}>Update</button>
-    <button>Delete</button>
+    <button onClick={()=>delteUser(user._id)}>Delete</button>
+   </div>
        </tbody>
       )
     })

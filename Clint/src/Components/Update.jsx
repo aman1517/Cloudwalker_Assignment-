@@ -56,15 +56,17 @@ const Update = () => {
      await AddUser(user)
     }
     return (
-      <div>
-        <p>Update Details</p>
+      <div className='create_user'>
+        <h2>Add Details</h2>
         <form onSubmit={submitHandler}>
+        <div className='namedetails'>
           <label>user</label>
           <input type="text" placeholder="Enter your username" onChange={inputHandleChane} name="username" value={user.username}/>
+          <br/>
           <label>Name</label>
-          <input type="text" placeholder="Enter your name here" onChange={inputHandleChane} name="name"  value={user.name}/>
+          <input type="text" placeholder="Enter your name here" onChange={inputHandleChane} name="name"  value={user.name}/> <br/>
           <label>Father's Name</label>
-          <input type="text" placeholder="Enter your father's name here" onChange={inputHandleChane} name="father_name"  value={user.father_name} />
+          <input type="text" placeholder="Enter your father's name here" onChange={inputHandleChane} name="father_name"  value={user.father_name} /> <br/>
           <label>Mother's Name</label>
           <input  type="text" placeholder="Enter your father's name here"  onChange={inputHandleChane} name="mother_name" value={user.mother_name}  /><br/>
           <label>DOB</label>
@@ -191,7 +193,8 @@ const Update = () => {
            <option value="400075">400075</option>
            <option value="400076">400076</option>
         </select><br/>
-      <input type="submit"  name='Submit'/>
+      <input type="submit"  name='Submit' className='btn'/>
+      </div>
         </form>
       </div>
     );

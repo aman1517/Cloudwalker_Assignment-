@@ -1,9 +1,11 @@
 import React,{useState} from 'react';
 import { AddUser } from '../service/api';
+import { useNavigate } from 'react-router-dom';
 import "../Style/Create.css"
 
 
 const defaultValue={
+ 
   username:"",
   name:"",
   father_name:"",
@@ -17,6 +19,7 @@ const defaultValue={
 }
 const Create = () => {
   const [user,setUser]=useState(defaultValue)
+  const navigate=useNavigate()
  
 
   const handleChange=(e)=>{
@@ -50,6 +53,7 @@ const Create = () => {
   const submitHandler=async(e)=>{
     e.preventDefault()
    await AddUser(user)
+   navigate("/getusers")
   }
   return (
     <div className='create_user'>
@@ -190,7 +194,7 @@ const Create = () => {
          <option value="400075">400075</option>
          <option value="400076">400076</option>
       </select><br/>
-    <input type="submit"  name='Submit'/>
+    <input type="submit"  name='Submit' className='btn'/>
     </div>
       </form>
     </div>

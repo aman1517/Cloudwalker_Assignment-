@@ -4,13 +4,13 @@ import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import AllUser from './Components/AllUser';
 import Update from './Components/Update';
-import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
+import { Routes, Route, Router } from "react-router-dom";
 
 function App() {
   return (
     <>
     <Navbar/>
-    <BrowserRouter>
+    
     <Routes>
    
     <Route path="/" element={<Home/>}/>
@@ -19,7 +19,7 @@ function App() {
     <Route path="/update/:id" element={<Update />} />
   
     </Routes>
-  </BrowserRouter>
+  
   </>
 
   );

@@ -32,4 +32,13 @@ const getuserr=async(req,res)=>{
              res.status(404).json({messege:messege.err})
      }
 }
-module.exports={AddUser,getusers,getuserr}
+const deleteUser=async(req,res)=>{
+  try{
+    await UserData.deleteOne(req.params.id)
+  }
+  catch(err){
+     console.log("err while deleting")
+  }
+}
+
+module.exports={AddUser,getusers,getuserr,deleteUser}

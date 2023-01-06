@@ -24,3 +24,12 @@ export const getuserr=async(id)=>{
     console.log("error while calling geting api",err)
  }
 }
+
+export const delteUser=async(id)=>{
+  try{
+    return await axios.delete(`${url}/${id}`)
+  }
+  catch(err){
+    console.log("error")
+  }
+}

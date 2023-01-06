@@ -15,7 +15,18 @@
  text-align: center;
 ;
 }
+.btn{
+    width: 70%;
+    margin: auto;
+    background-color: green;
+    color: white;
+    font-size: 25px;
+    margin-top: 25px;
 
+}
+.btn:hover{
+    cursor: pointer;
+}
 /* .create_user>form>div{
     display: flex;
     justify-content: space-around;

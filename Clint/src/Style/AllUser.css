@@ -1,9 +1,29 @@
-/* .TableforUser{
- border: 1px solid red;
+.TableforUser{
+    border: 2px solid black;
+    width: 70%;
+    margin: auto;
 }
-.tablehead>tr{
-    border: 1px solid black;
-} */
 table, th, td,button {
     border: 1px solid;
+  }
+  
+  .edit_dlete>button{
+    width: 80px;
+    height: 30px;
+  }
+  .edit_dlete>button:hover{
+    cursor: pointer;
+  }
+  
+  .edit_dlete>button:nth-child(2){
+    margin-left: 25px;
+    background-color: red;
+    color: black;
+   
+  }
+  .edit_dlete>button:nth-child(1){
+    margin-left: 25px;
+    background-color: greenyellow;
+    color: black;
+   
   }
