@@ -17,10 +17,10 @@ const userschema = mongoose.Schema(
         type: String,
         required: true,
       },
-      DOB: {
-        type: String,
-        required: true,
-      },
+    //   DOB: {
+    //     type: String,
+    //     required: true,
+    //   },
       products: [{ type: String, required: true }],
        hobbies: [{ type: String }],
       city:{ type: String,

@@ -1,0 +1,9 @@
+/* .TableforUser{
+ border: 1px solid red;
+}
+.tablehead>tr{
+    border: 1px solid black;
+} */
+table, th, td,button {
+    border: 1px solid;
+  }

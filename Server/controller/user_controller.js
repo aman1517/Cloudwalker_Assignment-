@@ -1,10 +1,8 @@
 
- const { response } = require("express");
 const UserData =require("../Schema/user_schema.js")
  const AddUser=async(req,res)=>{
-    console.log("helo")
     const user=req.body
-    const newUser=new User(user);
+    const newUser=new UserData(user);
     try{
   await newUser.save()
   console.log("Good")
@@ -15,4 +13,14 @@ const UserData =require("../Schema/user_schema.js")
     }
     
 }
-module.exports=AddUser
+
+const getusers=async(req,res)=>{
+  try{
+ const users= await UserData.find()
+ res.status(200).json(users)
+  }
+  catch(err){
+          res.status(404).json({messege:messege.err})
+  }
+}
+module.exports={AddUser,getusers}

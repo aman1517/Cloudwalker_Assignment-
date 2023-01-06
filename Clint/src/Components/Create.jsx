@@ -7,7 +7,7 @@ const defaultValue={
   name:"",
   father_name:"",
   mother_name:"",
-  DOB:"",
+  // DOB:"",
   products:[],
   hobbies:[],
   state:"",
@@ -55,15 +55,15 @@ const Create = () => {
       <p>Add Details</p>
       <form onSubmit={submitHandler}>
         <label>user</label>
-        <input type="text" placeholder="Enter your username" onChange={ (e)=>inputHandleChane(e)} name="user"/>
+        <input type="text" placeholder="Enter your username" onChange={inputHandleChane} name="username"/>
         <label>Name</label>
-        <input type="text" placeholder="Enter your name here" onChange={ (e)=>inputHandleChane(e)} name="name"/>
+        <input type="text" placeholder="Enter your name here" onChange={inputHandleChane} name="name"/>
         <label>Father's Name</label>
-        <input type="text" placeholder="Enter your father's name here" onChange={ (e)=>inputHandleChane(e)} name="father_name" />
+        <input type="text" placeholder="Enter your father's name here" onChange={inputHandleChane} name="father_name" />
         <label>Mother's Name</label>
-        <input  type="text" placeholder="Enter your father's name here"  onChange={ (e)=>inputHandleChane(e)} name="mother_name"  /><br/>
+        <input  type="text" placeholder="Enter your father's name here"  onChange={inputHandleChane} name="mother_name"  /><br/>
         <label>DOB</label>
-        <input  type="date" placeholder="Enter your DOB" onChange={ (e)=>inputHandleChane(e)} name="DOB"/><br/>
+        <input  type="date" placeholder="Enter your DOB" onChange={inputHandleChane} name="DOB"/><br/>
         <label> Select your Products</label><br/>
         <label>MacBook</label>
         <input
